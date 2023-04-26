@@ -1,5 +1,8 @@
 // Add imports above this line
-import { galleryItems } from './gallery-items.js';
+import SimpleLightbox from "simplelightbox";
+
+
+import { galleryItems } from './gallery-items';
 //1, 3
 const galleryContent = document.querySelector('ul.gallery');
 function markup(items) {
