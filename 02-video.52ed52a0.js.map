@@ -1,1 +1,0 @@
-{"mappings":"YAAA,IAAMA,EAASC,SAASC,iBAAiB,iBACrB,IAAIC,OAAOH,E","sources":["src/js/02-video.js"],"sourcesContent":["const iframe = document.querySelectorAll('#vimeo-player');\nconst vimeoPlayer = new player(iframe);\n"],"names":["$5a94271ad32ea534$var$iframe","document","querySelectorAll","player"],"version":3,"file":"02-video.52ed52a0.js.map"}
