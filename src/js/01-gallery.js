@@ -1,22 +1,23 @@
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
+//1, 3
 const galleryContent = document.querySelector('ul.gallery');
+galleryContent.style.listStyle = 'none';
 function markup(items) {
   return items.map(({ preview, original, description }) => {
       return `<li class="gallery__item"><a class="gallery__link" href="${original}">
               <img class="gallery__img" src="${preview}" data-source="${original}" 
               alt="${description}" /></a></li>`; }).join('');}
 galleryContent.innerHTML = markup(galleryItems);
-
+//4
 galleryContent.addEventListener('click', onGetImage);
 function onGetImage(e) { e.preventDefault();
   const { target } = e;
   if (!target.classList.contains('gallery__img')) {
     return;
   }
-
+//5
   const instance = basicLightbox.create(`<img src="${target.dataset.source}"/>`, {
     onShow: () => window.addEventListener('keydown', onEscButton),
     onClose: () => window.removeEventListener('keydown', onEscButton), });
@@ -25,3 +26,4 @@ function onGetImage(e) { e.preventDefault();
     if (e.code === 'Escape') { instance.close(); }
   }
 }
+var lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250 });
