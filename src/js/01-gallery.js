@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
-//1, 3
+
 const galleryContent = document.querySelector('ul.gallery');
 galleryContent.style.listStyle = 'none';
 function markup(items) {
@@ -10,20 +10,6 @@ function markup(items) {
               <img class="gallery__img" src="${preview}" data-source="${original}" 
               alt="${description}" /></a></li>`; }).join('');}
 galleryContent.innerHTML = markup(galleryItems);
-//4
-galleryContent.addEventListener('click', onGetImage);
-function onGetImage(e) { e.preventDefault();
-  const { target } = e;
-  if (!target.classList.contains('gallery__img')) {
-    return;
-  }
-//5
-  const instance = basicLightbox.create(`<img src="${target.dataset.source}"/>`, {
-    onShow: () => window.addEventListener('keydown', onEscButton),
-    onClose: () => window.removeEventListener('keydown', onEscButton), });
-  instance.show();
-  function onEscButton(e) {
-    if (e.code === 'Escape') { instance.close(); }
-  }
-}
-var lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250 });
+var lightbox = new SimpleLightbox('.gallery a',  {
+    overlayOpacity: 0.3, captionSelector: "img", captionType: "attr",
+    captionDelay: 250, captionsData: "alt", captionClass: 'captionstyle' });
